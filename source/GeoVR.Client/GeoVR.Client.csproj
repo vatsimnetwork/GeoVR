@@ -1,4 +1,67 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Version>2.2.0</Version>
+        <OutputType>Library</OutputType>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+
+
+        <PackageReference Include="NAudio.Asio" Version="2.0.0" />
+        <PackageReference Include="NAudio.Core" Version="2.0.0" />
+        <PackageReference Include="NAudio.Midi" Version="2.0.1" />
+        <PackageReference Include="NAudio.Wasapi" Version="2.0.0" />
+        <PackageReference Include="NAudio.WinMM" Version="2.0.1" />
+        <!-- <PackageReference Include="NAudio.WinForms" Version="2.0.1" /> -->
+
+
+
+        <!-- <PackageReference Include="NAudio" Version="2.0.1" /> -->
+        <PackageReference Include="Concentus" Version="1.1.7" />
+        <PackageReference Include="RestSharp" Version="106.12.0" />
+        <PackageReference Include="Costura.Fody">
+            <Version>5.5.0</Version>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="NLog" Version="4.7.11" />
+
+
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="FodyWeavers.xml" />
+        <EmbeddedResource Include="Samples\Land_Line_Ring_f32.wav" />
+        <EmbeddedResource Include="Samples\AC_Bus_f32.wav" />
+        <EmbeddedResource Include="Samples\HF_WhiteNoise_f32.wav" />
+        <EmbeddedResource Include="Samples\Crackle_f32.wav" />
+        <EmbeddedResource Include="Samples\Click_f32.wav" />
+        <EmbeddedResource Include="Samples\WhiteNoise_f32.wav" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Include="..\GeoVR.Connection\GeoVR.Connection.csproj">
+            <Project>{76bf4d77-c008-431a-bc50-74d185c4799f}</Project>
+            <Name>GeoVR.Connection</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\GeoVR.Shared\GeoVR.Shared.csproj">
+            <Project>{f1485964-220b-4596-8dbd-2186cea960e1}</Project>
+            <Name>GeoVR.Shared</Name>
+        </ProjectReference>
+    </ItemGroup>
+
+
+
+
+</Project>
+
+<!-- 
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -123,4 +186,4 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-</Project>
+</Project> -->
