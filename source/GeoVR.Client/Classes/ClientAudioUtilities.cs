@@ -20,7 +20,8 @@ namespace GeoVR.Client
     {
         public static bool IsInputDevicePresent()
         {
-            return WaveIn.DeviceCount > 0;
+            return GetWasapiInputDevices().Count() > 0;
+            //return WaveIn.DeviceCount > 0;
         }
 
         /// <summary>
@@ -35,12 +36,12 @@ namespace GeoVR.Client
         private static IEnumerable<string> GetWaveInInputDevices()
         {
             List<string> inputDevices = new List<string>();
-            for (int i = 0; i < WaveIn.DeviceCount; i++)
-            {
-                //var controls = GetWaveInMixerControls(i);
-                //if (controls.Valid)
-                inputDevices.Add(WaveIn.GetCapabilities(i).ProductName);
-            }
+            // for (int i = 0; i < WaveIn.DeviceCount; i++)
+            // {
+            //     //var controls = GetWaveInMixerControls(i);
+            //     //if (controls.Valid)
+            //     inputDevices.Add(WaveIn.GetCapabilities(i).ProductName);
+            // }
             return inputDevices;
         }
 
@@ -65,20 +66,22 @@ namespace GeoVR.Client
 
         private static IEnumerable<string> GetWaveOutOutputDevices()
         {
-            for (int i = 0; i < WaveOut.DeviceCount; i++)
-            {
-                yield return WaveOut.GetCapabilities(i).ProductName;
-            }
+            List<string> outputDevices = new List<string>();
+            // for (int i = 0; i < WaveOut.DeviceCount; i++)
+            // {
+            //     yield return WaveOut.GetCapabilities(i).ProductName;
+            // }
+            return outputDevices;
         }
 
         public static int MapInputDevice(string inputDevice)
         {
-            for (int i = 0; i < WaveIn.DeviceCount; i++)
-            {
-                //WaveIn name may be truncated - assume inputDevice is full Wasapi name
-                if (inputDevice.StartsWith(WaveIn.GetCapabilities(i).ProductName))
-                    return i;
-            }
+            // for (int i = 0; i < WaveIn.DeviceCount; i++)
+            // {
+            //     //WaveIn name may be truncated - assume inputDevice is full Wasapi name
+            //     if (inputDevice.StartsWith(WaveIn.GetCapabilities(i).ProductName))
+            //         return i;
+            // }
             return 0;       //Else use default
         }
 
@@ -91,11 +94,11 @@ namespace GeoVR.Client
 
         public static int MapOutputDevice(string outputDevice)
         {
-            for (int i = 0; i < WaveOut.DeviceCount; i++)
-            {
-                if (outputDevice.StartsWith(WaveOut.GetCapabilities(i).ProductName))
-                    return i;
-            }
+            // for (int i = 0; i < WaveOut.DeviceCount; i++)
+            // {
+            //     if (outputDevice.StartsWith(WaveOut.GetCapabilities(i).ProductName))
+            //         return i;
+            // }
             return 0;       //Else use default
         }
 
