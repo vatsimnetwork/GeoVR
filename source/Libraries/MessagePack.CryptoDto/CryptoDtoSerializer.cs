@@ -3,7 +3,7 @@ using System;
 using System.Buffers;
 using System.Buffers.Binary;
 using System.Collections.Concurrent;
-using System.Security.Cryptography;
+//using System.Security.Cryptography;
 using System.Text;
 
 namespace MessagePack.CryptoDto
@@ -129,7 +129,7 @@ namespace MessagePack.CryptoDto
                             break;
                         }
                     default:
-                        throw new CryptographicException("Mode not recognised");
+                        throw new System.Security.Cryptography.CryptographicException("Mode not recognised");
                 }
             }
         }

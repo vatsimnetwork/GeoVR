@@ -1,7 +1,8 @@
 ﻿using NaCl.Core;
 using System;
 using System.Linq;
-using System.Security.Cryptography;
+//using System.Security.Cryptography;
+
 
 namespace MessagePack.CryptoDto
 {
@@ -30,7 +31,7 @@ namespace MessagePack.CryptoDto
         {
             ChannelTag = channelTag;
 
-            using (RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider())
+            using (System.Security.Cryptography.RNGCryptoServiceProvider rnd = new System.Security.Cryptography.RNGCryptoServiceProvider())
             {
                 aeadReceiveKey = new byte[Aead.KeySize];
                 rnd.GetBytes(aeadReceiveKey);
@@ -83,7 +84,7 @@ namespace MessagePack.CryptoDto
                     case CryptoDtoMode.ChaCha20Poly1305:
                         return aeadReceiveKey;
                     default:
-                        throw new CryptographicException("CryptoDtoMode value not handled.");
+                        throw new System.Security.Cryptography.CryptographicException("CryptoDtoMode value not handled.");
                 }
             }
         }
@@ -94,7 +95,7 @@ namespace MessagePack.CryptoDto
             {
                 if (Contains(sequenceReceived))
                 {
-                    throw new CryptographicException("Received sequence has been duplicated.");         // Duplication or replay attack
+                    throw new System.Security.Cryptography.CryptographicException("Received sequence has been duplicated.");         // Duplication or replay attack
                 }
 
                 if (receiveSequenceHistoryDepth < receiveSequenceSizeMaxSize)                       //If the buffer has been filled...
@@ -105,7 +106,7 @@ namespace MessagePack.CryptoDto
                 {
                     var minValue = GetMin(out int minIndex);
                     if (sequenceReceived < minValue)
-                        throw new CryptographicException("Received sequence is too old.");              // Possible replay attack
+                        throw new System.Security.Cryptography.CryptographicException("Received sequence is too old.");              // Possible replay attack
                     receiveSequenceHistory[minIndex] = sequenceReceived;
                 }
 
@@ -156,7 +157,7 @@ namespace MessagePack.CryptoDto
                     case CryptoDtoMode.ChaCha20Poly1305:
                         return aeadTransmitKey;
                     default:
-                        throw new CryptographicException("CryptoDtoMode value not handled.");
+                        throw new System.Security.Cryptography.CryptographicException("CryptoDtoMode value not handled.");
                 }
             }
         }

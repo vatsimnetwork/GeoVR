@@ -1,25 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netcoreapp3.0;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-	<LangVersion>8.0</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;netcoreapp3.0;netcoreapp3.1;netcoreapp5.0;net6.0;net8.0</TargetFrameworks>
+        <!-- <TargetFrameworks>net6.0;net8.0</TargetFrameworks> -->
+        <LangVersion>8.0</LangVersion>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MessagePack" Version="2.3.75" />
-    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="5.0.9" />
-    <PackageReference Include="Microsoft.Toolkit.HighPerformance" Version="7.0.2" />
-    <PackageReference Include="System.Buffers" Version="4.5.1" />
-    <PackageReference Include="System.Memory" Version="4.5.4" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MessagePack" Version="2.3.75" />
+        <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="5.0.9" />
+        <PackageReference Include="Microsoft.Toolkit.HighPerformance" Version="7.0.2" />
+        <PackageReference Include="System.Buffers" Version="4.5.1" />
+        <PackageReference Include="System.Memory" Version="4.5.4" />
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\NaCl.Core\NaCl.Core.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\NaCl.Core\NaCl.Core.csproj" />
+    </ItemGroup>
 
-  <PropertyGroup Condition="$(TargetFramework) == 'netcoreapp3.0' OR $(TargetFramework) == 'netcoreapp3.1' OR $(TargetFramework) == 'netcoreapp5.0'">
-	<DefineConstants>NETCORE</DefineConstants>
-  </PropertyGroup>
+    <PropertyGroup Condition="$(TargetFramework) == 'netcoreapp3.0' OR $(TargetFramework) == 'netcoreapp3.1' OR $(TargetFramework) == 'netcoreapp5.0' OR $(TargetFramework) == 'net6.0' OR $(TargetFramework) == 'net8.0'">
+        <DefineConstants>NETCORE</DefineConstants>
+    </PropertyGroup>
 
 </Project>

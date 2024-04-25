@@ -34,7 +34,7 @@ namespace GeoVR.Connection
             var watch = Stopwatch.StartNew();
             var client = new RestClient(address);
             var request = new RestRequest(resource, Method.GET);
-            IRestResponse response = await client.ExecuteTaskAsync(request);
+            IRestResponse response = await client.ExecuteAsync(request);
             watch.Stop();
             logger.Debug(resource + " (" + watch.ElapsedMilliseconds + "ms)");
             if (!response.IsSuccessful)
