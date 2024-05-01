@@ -1,4 +1,5 @@
-﻿using NaCl.Core;
+﻿using Microsoft.Toolkit.HighPerformance;
+using NaCl.Core;
 using NLog;
 using System;
 using System.Buffers;
@@ -141,9 +142,10 @@ namespace MessagePack.CryptoDto
         }
         catch (Exception ex)
         {
-
+          logger.Fatal(ex, $"Output: {output}  header: {header} crypto: {crypto}  dtoNameBuffer: {dtoNameBuffer.ToString()} dtoBuffer: {dtoBuffer.ToString()}  ");
           logger.Fatal(ex, ex.StackTrace);
           logger.Fatal(ex, "CryptoPack: " + ex.Message);
+          throw;
           //PrometheusMetrics.FatalTaskErrors.Inc();
         }
       }
