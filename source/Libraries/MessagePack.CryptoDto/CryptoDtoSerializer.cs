@@ -1,5 +1,4 @@
-﻿using Microsoft.Toolkit.HighPerformance;
-using NaCl.Core;
+﻿using NaCl.Core;
 using NLog;
 using System;
 using System.Buffers;
